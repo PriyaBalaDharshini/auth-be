@@ -3,7 +3,7 @@ import Auth from '../helper/auth.js'
 
 const getAllUsers = async (req, res) => {
     try {
-        let users = await userModel.find()
+        let users = await userModel.find({}, { password: 0 })
         res.status(200).send({
             message: "User data fetch successful",
             users
@@ -13,7 +13,7 @@ const getAllUsers = async (req, res) => {
             message: "Internal Server Error"
         })
     }
-};
+}
 
 const getUserById = async (req, res) => {
     try {
